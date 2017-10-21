@@ -16,7 +16,7 @@ cache:
 env:
  global:
  - ANDROID_API=26
- - EMULATOR_API=24
+ - EMULATOR_API=22
  - ANDROID_BUILD_TOOLS=26.0.1
  - ADB_INSTALL_TIMEOUT=5 # minutes
  - secure:"btrii3ex8XJwkn7dhzR/309hzDMCnaR+5IkqaeOnqEBI53eZJpLvkABheKmb2Y21LeqKswYrQtOhoxaOMpx3pu2dAHgTfwWO4u9g6cEZqS+xuNqd0P2pzV5AYYpAzGcU40bWDK3JPxNm6nP3MmIhzGHZOJgisIVALXWxdygHHuoGDA9cnRk6WqRs6FU6SfcJQXwn08UmvavYwiL+ykR2bGJbIviMf/6j7aEZcLUyj34792l0DyzCLWtVJAxNhSxdY5a3yqrjFg6IWoSV/cI+lJVSmh6fK7nAheG4xx36ZFxELz37MS2fy5vmdPdPbt+SYUJEkIATCoZQATnsK81tg7rpHTC0HWuEf7ND1xflJs3RgZ2Z2RKMVWuBeShg51kWgxZLoPil37sCIUAEGrDmTqqHndaT4wabak/VO72/88CXFSrzpHOy6WJFrkwdPXPY2LxRt+yfwE5EFVgsMyKMhywdYF5BHkJd7MCWEoJncEXMiWmKscBOUK4uJM2kRGZIDXeb5DLeJjN6IW6wEg1crvdFhjbr9vWwTMuYhyikJGTvxhvHn+yZ8LT2coNX3ASX+grGhw6wuZWldbWRYiXBq7iJiqo/MjYmdsz+QghrcIi6tpp4Na7LBnubMlo0k3emj1F1YXT7NKxXd7OP1iAjO22BYug6xtsDjFIR6AuaP5M="
@@ -34,7 +34,7 @@ android:
  - extra-android-m2repository # for design library
  - addon-google_apis-google-19 # google play services
  - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
- - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
+ - sys-img-armeabi-v7a-android-$EMULATOR_API_LEVEL
 
  licenses:
    - android-sdk-preview-license-.+
@@ -43,17 +43,20 @@ android:
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_f439949bde01_key -iv $encrypted_f439949bde01_iv -in kotlin-mvp.jks.enc -out kotlin-mvp.jks -d
+  - mkdir "$ANDROID_HOME/licenses" || true
+  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
   - chmod +x gradlew
 
 before_script:
   - chmod +x gradlew
-  - echo no | android create avd --force --name test --target android-24 --abi armeabi-v7a
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
 
 script:
-  - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
+  - ./gradlew clean build connectedCheck -PdisablePreDex --stacktrace
 
 before_deploy:
   - cp $TRAVIS_BUILD_DIR/.keystore $HOME
