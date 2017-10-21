@@ -1,5 +1,5 @@
 # Android + Kotlin + MVP + Clean Architecture Demo
-
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=59ebd6a3f64f9f000132ac41&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/59ebd6a3f64f9f000132ac41/build/latest?branch=master)
 
 ### Description
 *Kotlin-MVP* is an Android application built to highlight __MVP (Model View Presenter)__ and __Clean Architecture__ concepts
