@@ -20,7 +20,7 @@ env:
  - ANDROID_BUILD_TOOLS=26.0.1
  - ANDROID_ABI=armeabi-v7a
  - ANDROID_TAG=google_apis
- - ADB_INSTALL_TIMEOUT=5 # minutes
+ - ADB_INSTALL_TIMEOUT=2 # minutes
  - secure:"btrii3ex8XJwkn7dhzR/309hzDMCnaR+5IkqaeOnqEBI53eZJpLvkABheKmb2Y21LeqKswYrQtOhoxaOMpx3pu2dAHgTfwWO4u9g6cEZqS+xuNqd0P2pzV5AYYpAzGcU40bWDK3JPxNm6nP3MmIhzGHZOJgisIVALXWxdygHHuoGDA9cnRk6WqRs6FU6SfcJQXwn08UmvavYwiL+ykR2bGJbIviMf/6j7aEZcLUyj34792l0DyzCLWtVJAxNhSxdY5a3yqrjFg6IWoSV/cI+lJVSmh6fK7nAheG4xx36ZFxELz37MS2fy5vmdPdPbt+SYUJEkIATCoZQATnsK81tg7rpHTC0HWuEf7ND1xflJs3RgZ2Z2RKMVWuBeShg51kWgxZLoPil37sCIUAEGrDmTqqHndaT4wabak/VO72/88CXFSrzpHOy6WJFrkwdPXPY2LxRt+yfwE5EFVgsMyKMhywdYF5BHkJd7MCWEoJncEXMiWmKscBOUK4uJM2kRGZIDXeb5DLeJjN6IW6wEg1crvdFhjbr9vWwTMuYhyikJGTvxhvHn+yZ8LT2coNX3ASX+grGhw6wuZWldbWRYiXBq7iJiqo/MjYmdsz+QghrcIi6tpp4Na7LBnubMlo0k3emj1F1YXT7NKxXd7OP1iAjO22BYug6xtsDjFIR6AuaP5M="
  - secure:"htR/IJl0GD6IFVUcUYRKqH3hXAcvHlgEineE6a4TtFgLIpm3Ui15nsyDUvFyJ3dOdNkgXZ1Q+AAZ2pAhyBEk3D/mG5T+5v7RhWq7HYuY4Cd3aLbLHlptihTOdQk92SxN3JisJwX24DN8Pf2e5SdVgExgKMA3RH2i2nmUmye5NmfZS8USstfJlKvlkXKS+vYNZUn6dnI9FIKv4BAs+0BVWuXmcRJs0m9w/eXxKQjFEYcXYJFrdKKVqWYs/2l4swP6LHp0SJ469y5p8A8Lx/+P9ofDplRioa+uSMPEXDo071hBko1r7G47KAFSMIpv1WwA6cfRnHzYvUvBRP+b8sGfc4lO7FOynrUYRkCAQBYwKlJ0IUXg012tufKoa/u5YRS5sXB0a4gXp9c4gmjDCP0ZQZWDI6jXkK1DXBfeV/DHMMXE0dztbQACbpHidky6DndGXIKBxPla7LSeDVqE418qMs9s4tvGs4BCpJycZ7CV6JLqxBBD6ZJGsIHI56F9flWbSPwJzrNOJep63x2L36ht4+Y1XyYi5Cd4W5QhZ+/yp6tDZbvwVLyYvmDXXPDFns51Y8unDG5uxWrm5AlN1JQ9P4I7lH1Ay+zaXUm54/cJcEaiH+YfJ3pTsP8lkT8mqUPsd6+Yh2mHr71zEjz/2zCyPOvJSYd9YPgDFRCpCMr2k/I="
 
@@ -34,9 +34,12 @@ android:
  - android-$EMULATOR_API
  - extra-google-m2repository
  - extra-android-m2repository # for design library
+ - addon-google_apis-google-$ANDROID_API
+ - addon-google_apis-google-$EMULATOR_API
+ - extra-google-google_play_services
+ - extra-android-support
  - addon-google_apis-google-19 # google play services
- - sys-img-armeabi-v7a-google_apis-$EMULATOR_API
- - sys-img-armeabi-v7a-google_apis-$ANDROID_API
+ - sys-img-armeabi-v7a-google_apis-25
 
  licenses:
    - android-sdk-preview-license-.+
@@ -45,15 +48,11 @@ android:
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_f439949bde01_key -iv $encrypted_f439949bde01_iv -in kotlin-mvp.jks.enc -out kotlin-mvp.jks -d
-  - mkdir "$ANDROID_HOME/licenses" || true
-  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
   - chmod +x gradlew
 
 before_script:
-  - android list targets
-  - echo no | android create avd --force -n test -t "android-"$EMULATOR_API --abi $ANDROID_ABI --tag $ANDROID_TAG
-  - emulator -avd test -no-skin -no-audio -no-window &
+  - echo no | android create avd --force -n test -t android-25 --abi google_apis/armeabi-v7a
+  - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
 
