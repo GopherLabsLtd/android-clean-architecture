@@ -47,9 +47,6 @@ install:
 - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platforms;android-26' > /dev/null
 - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'extras;google;m2repository' > /dev/null
 
-# Check tools and dependencies installed
-- yes | sdkmanager --list
-
 script:
 # force init of adb way before any Gradle task that uses ADB; prevents a timeout error that skips emulators of android-24
   - adb devices
