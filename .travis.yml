@@ -1,0 +1,30 @@
+sudo: false
+language: android
+jdk:
+  - oraclejdk8
+
+# INSTRUMENTED TESTS ARE DISABLED - until Google or Travis fix the mess with emulation, only local tests are enabled
+#  - sys-img-armeabi-v7a-android-24
+install:
+# Travis still uses 'android' command behind the 'components' section update.
+# That command is obsolete and cannot update Android SDK Tools after 25.2.5.
+# Let's solve it here with the new command 'sdkmanager'
+- yes | sdkmanager --verbose "build-tools;26.0.1"
+- yes | sdkmanager --verbose "platform-tools"
+- yes | sdkmanager --verbose "tools"
+- yes | sdkmanager --verbose "platforms;android-24"
+- yes | sdkmanager --verbose "extras;android;m2repository"
+
+# Check tools and dependencies installed
+- yes | sdkmanager --list
+
+script:
+# force init of adb way before any Gradle task that uses ADB; prevents a timeout error that skips emulators of android-24
+  - adb devices
+# build app and assemble APK, in debug mode
+  - ./gradlew assembleDebug
+# run all the local unit tests of app module
+  - ./gradlew test
+env:
+  matrix:
+  - ANDROID_TARGET=android-24 ANDROID_ABI=armeabi-v7a
