@@ -3,6 +3,16 @@ language: android
 jdk:
   - oraclejdk8
 
+# Only create build on Pushes to Master or Pull Requests.
+branches:
+  only:
+    - master
+
+# Disable emails entirely
+notifications:
+  email: false
+
+
 # INSTRUMENTED TESTS ARE DISABLED - until Google or Travis fix the mess with emulation, only local tests are enabled
 #  - sys-img-armeabi-v7a-android-24
 install:
