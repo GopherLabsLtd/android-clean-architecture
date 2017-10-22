@@ -6,7 +6,7 @@ import it.gopher.kotlin_mvp.core.gateway.AddBookEntityGatewayHandler
 import it.gopher.kotlin_mvp.core.gateway.BookGateway
 import java.util.*
 
-typealias AddBookUseCaseHandler = (books: Result<Array<Book>, Exception>) -> Unit
+typealias AddBookUseCaseHandler = (books: Result<Book, Exception>) -> Unit
 
 /**
  * Contract for Add Book Use Case.
