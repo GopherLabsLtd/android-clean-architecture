@@ -1,8 +1,36 @@
 # Android + Kotlin + MVP + Clean Architecture Demo
-**Build Status:** master [![Build Status](https://travis-ci.org/GopherLabsLtd/android-clean-architecture.svg?branch=master)](https://travis-ci.org/GopherLabsLtd/android-clean-architecture)
+### Build Status:
+
+master:  [![Build Status](https://travis-ci.org/GopherLabsLtd/android-clean-architecture.svg?branch=master)](https://travis-ci.org/GopherLabsLtd/android-clean-architecture)
 
 ### Description
-*Kotlin-MVP* is an Android application built to highlight __MVP (Model View Presenter)__ and __Clean Architecture__ concepts
+*Kotlin-MVP* is an Android application built to highlight __MVP (Model View Presenter)__ and __Clean Architecture__ concepts.
+
+### Contents
+- [Current Status](#current-status)
+- [Run Requirements](#current-status)
+- [High Level Layers](#high-level-layers)
+  - [MVP Concepts](#mvp-concepts)
+    - [Presentation Logic](#presentation-logic)
+  - [Clean Architecture Concepts](#clean-architecture-concepts)
+    - [Application Logic](#application-logic)
+- [Demo Application Details](#demo-application-details)
+- [DevOps Integration](#devops-integration)
+- [Debatable Design Decisions](#debatable-design-decisions)
+- [Useful Resources](#useful-resources)
+    - [MVP & Other presentation patterns](#mvp-&-other-presentation-patterns)
+    - [Clean Architecture](#clean-architecture)
+    - [Unit Tests](#unit-tests)
+- [Contributing](#contributing)
+
+### Current Status
+
+- [x] Integrate Travis CI ( [.travis.yml](.travis.yml) )
+- [x] 100% Kotlin
+- [ ] Networking Integration (50%)
+- [ ] Dagger 2 Example
+- [ ] RxMVP Example
+- [ ] Realm/SQLLite Integration
 
 ### Run Requirements
 
@@ -44,6 +72,11 @@
 ### Demo Application Details
 
  TODO
+
+### DevOps Integration
+
+TODO
+
 ### Debatable Design Decisions
 
 Giving that a large majority of mobile apps are a thin client on top of a set of APIs and that most of them contain little business logic (since most of the business logic is found in the APIs) some of the `Clean Architecture` concepts can be debatable in the mobile world. Below you can find some:
