@@ -8,7 +8,7 @@ master:  [![Build Status](https://travis-ci.org/GopherLabsLtd/android-clean-arch
 
 ### Contents
 - [Current Status](#current-status)
-- [Run Requirements](#current-status)
+- [Run Requirements](#run-requirements)
 - [High Level Layers](#high-level-layers)
   - [MVP Concepts](#mvp-concepts)
     - [Presentation Logic](#presentation-logic)
@@ -18,7 +18,7 @@ master:  [![Build Status](https://travis-ci.org/GopherLabsLtd/android-clean-arch
 - [DevOps Integration](#devops-integration)
 - [Debatable Design Decisions](#debatable-design-decisions)
 - [Useful Resources](#useful-resources)
-    - [MVP & Other presentation patterns](#mvp-&-other-presentation-patterns)
+    - [MVP and Other presentation patterns](#mvp-and-other-presentation-patterns)
     - [Clean Architecture](#clean-architecture)
     - [Unit Tests](#unit-tests)
 - [Contributing](#contributing)
@@ -96,7 +96,7 @@ Discuss about all the design decision with your team members and make sure you a
 
 ### Useful Resources
 
-#### MVP & Other presentation patterns
+#### MVP and Other presentation patterns
 
 * [iOS Architecture Patterns](https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52#.67lieoiim)
 * [Architecture Wars - A New Hope](https://swifting.io/blog/2016/09/07/architecture-wars-a-new-hope/)
