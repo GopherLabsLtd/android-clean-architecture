@@ -23,6 +23,9 @@ android {
     }
 
     lintOptions {
+        htmlReport true
+        htmlOutput file("lint-report.html")
+        warningsAsErrors true
         abortOnError false
     }
 }
