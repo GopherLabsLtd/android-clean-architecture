@@ -41,11 +41,11 @@ install:
 # Travis still uses 'android' command behind the 'components' section update.
 # That command is obsolete and cannot update Android SDK Tools after 25.2.5.
 # Let's solve it here with the new command 'sdkmanager'
-- yes | sdkmanager --verbose "build-tools;26.0.1"
-- yes | sdkmanager --verbose "platform-tools"
-- yes | sdkmanager --verbose "tools"
-- yes | sdkmanager --verbose "platforms;android-24"
-- yes | sdkmanager --verbose "extras;android;m2repository"
+- echo y | $HOME/android-sdk/tools/bin/sdkmanager 'tools' > /dev/null
+- echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platform-tools' > /dev/null
+- echo y | $HOME/android-sdk/tools/bin/sdkmanager 'build-tools;26.0.1' > /dev/null
+- echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platforms;android-26' > /dev/null
+- echo y | $HOME/android-sdk/tools/bin/sdkmanager 'extras;google;m2repository' > /dev/null
 
 # Check tools and dependencies installed
 - yes | sdkmanager --list
