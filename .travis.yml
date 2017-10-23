@@ -55,7 +55,7 @@ script:
 # build app and assemble APK, in debug mode
   - ./gradlew assembleDebug
 # run all the local unit tests of app module
-  - ./gradlew test
+  - ./gradlew testDebugUnitTest createDebugCoverageReport
 # run lint checker
   - ./gradlew lint
 
