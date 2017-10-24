@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="it.gopher.kotlin_mvp.MainActivity"
+    tools:context="it.gopher.kotlin_mvp.scenes.books.BooksActivity"
     tools:showIn="@layout/activity_main">
 
 
