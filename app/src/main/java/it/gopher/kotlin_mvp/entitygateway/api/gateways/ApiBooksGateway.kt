@@ -21,16 +21,9 @@ interface ApiBooksGateway : BookGateway {
 
 }
 
-public class ApiBooksGatewayImplementation : ApiBooksGateway {
-    val apiService: BooksApiService
+public class ApiBooksGatewayImplementation(
+        val apiService: BooksApiService) : ApiBooksGateway {
 
-    init {
-        val retrofit = Retrofit.Builder()
-                .baseUrl("https://www.gopher.it")
-                .addConverterFactory(MoshiConverterFactory.create())
-                .build()
-        apiService = retrofit.create(BooksApiService::class.java)
-    }
 
     override fun fetchBooks(completion: FetchBooksEntityGatewayHandler) {
         val call = apiService.fetchBooks()

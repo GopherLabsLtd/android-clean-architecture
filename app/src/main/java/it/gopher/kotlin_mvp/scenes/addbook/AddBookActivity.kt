@@ -7,7 +7,19 @@ import it.gopher.kotlin_mvp.R
 
 import kotlinx.android.synthetic.main.activity_add_book.*
 
-public class AddBookActivity : AppCompatActivity() {
+public class AddBookActivity : AppCompatActivity(), AddBookView {
+    override fun updateAddButtonState(isEnabled: Boolean) {
+
+    }
+
+    override fun updateCancelButtonState(isEnabled: Boolean) {
+
+    }
+
+    override fun displayBookError(title: String, message: String) {
+
+    }
+
     public var presenter: AddBookPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -31,7 +31,7 @@ data class AddBookParameters(val isbn: String,
 /**
  * Implementation of the Add Book Use Case.
  */
-public class AddBookImplementation(val booksGateway: BookGateway) : AddBookUseCase {
+public class AddBookUseCaseImplementation(val booksGateway: BookGateway) : AddBookUseCase {
 
     /**
      * Adds a book to the Gateway.
