@@ -1,14 +1,34 @@
-package it.gopher.kotlin_mvp
+package it.gopher.kotlin_mvp.scenes.books
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
+import it.gopher.kotlin_mvp.R
 
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class BooksActivity : AppCompatActivity(), BooksView {
+    override fun refreshBooksView() {
+
+    }
+
+    override fun displayBooksRetrievalError(title: String, message: String) {
+
+    }
+
+    override fun displayBookDeleteError(title: String, message: String) {
+
+    }
+
+    override fun deleteAnimated(row: Int) {
+
+    }
+
+    override fun endEditing() {
+
+    }
+
+    var presenter: BooksPresenter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
